@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+   <h1 class="text-center ">Potato disease prediction</h1>
+   <hr style="width:300px;height:1.5px;margin:auto;background-color:#0B5345;margin-top:10px">
+</div>
+  
+   <div class="container">
+       
+         <div class="row">
+               <div class="col-md-8 offset-md-2"> 
+               <div class="back  text-center"> 
+                     <form action="/" method="post" enctype="multipart/form-data">
+                     <div class="form-group ">
+                     <label style="display:block;color:#fff;font-size:17px">Upload the potato leaf image</label>
+                     <hr style="width:100px;height:1.5px;margin:auto;background-color:#fff">
+                     <input type="file" name="imagefile" class="in">
+                        <input type="submit" value="Predict" name="UPLOAD" class="btn btn-warning ">
+                     </div>
+                     </form>
+                     <img src={{image_path}} alt="error loading image" class="img-thumbnail img-fluid img-responsive"/>
+               </div>
+         </div>
+      </div>
+   </div>
+   {% if classname %}
+     
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8 offset-md-2">  
+                <hr style="width:100%;height:1.5px;margin:auto;background-color:#fff">
+                <div class="predict text-center">
+                  <p class="f">Prediction</p>
+                  <hr style="width:70;height:1px;margin:10px auto;background-color:#fff">
+                  <p> The potato is : <span style="font-size:18px;color:#566573 ;font-weight: 700;">{{classname}}</span></p>
+                  <p> Confidense : <span style="font-size:18px;color:#566573 ;font-weight: 700;">{{accuracy}}</span></p>
+               </div>
+            </div>
+               
+         </div>
+      </div>
+   {% endif %}
+      {% endblock%}
